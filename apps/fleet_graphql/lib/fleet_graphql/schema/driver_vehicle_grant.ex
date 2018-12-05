@@ -12,17 +12,18 @@ defmodule FleetGraphql.Schema.DriverVehicleGrant do
 
   object(:driver_vehicle_grant_mutations) do
     # TODO: uncomment this and write the resolver to grant driver vehicle access
-    # payload(field(:grant_driver_vehicle_access)) do
-    #   input do
-    #     field(:name)
-    #   end
-    # 
-    #   output do
-    #     field(:driver, :driver)
-    #   end
-    # 
-    #   resolve(&FleetGraphql.Schema.Driver.create_driver/2)
-    # end
+     payload(field(:grant_driver_vehicle_access)) do
+       input do
+         field(:driver_id, non_null(:id))
+         field(:vehicle_id, non_null(:id))
+       end
+
+       output do
+         field(:result, :boolean)
+       end
+
+       resolve(&FleetGraphql.Schema.DriverVehicleGrant.grant_driver_vehicle_access/2)
+     end
 
     payload(field(:revoke_driver_vehicle_access)) do
       input do
@@ -39,6 +40,23 @@ defmodule FleetGraphql.Schema.DriverVehicleGrant do
   end
 
   ## Resolvers
+
+  def grant_driver_vehicle_access(%{driver_id: driver_id, vehicle_id: vehicle_id}, _info) do
+    case decode_driver_and_vehicle_ids(driver_id, vehicle_id) do
+      {:ok, driver_id, vehicle_id} ->
+        require Ecto.Query
+
+        changeset = Fleet.Data.DriverVehicleGrant.changeset(%Fleet.Data.DriverVehicleGrant{},
+          %{driver_id: driver_id, vehicle_id: vehicle_id, scope: [:access]})
+
+        _ = Fleet.Repo.insert(changeset)
+        output = %{result: true}
+        {:ok, output}
+
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
 
   def check_driver_vehicle_access(parent, %{driver_id: driver_id, vehicle_id: vehicle_id}, _info) when map_size(parent) === 0 do
     case decode_driver_and_vehicle_ids(driver_id, vehicle_id) do
