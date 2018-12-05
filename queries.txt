@@ -1,0 +1,328 @@
+query#1
+query {
+  drivers{
+    name
+    id
+	}
+}
+
+output:
+{
+  "data": {
+    "drivers": [
+      {
+        "id": "RHJpdmVyOjE=",
+        "name": "Adams"
+      },
+      {
+        "id": "RHJpdmVyOjI=",
+        "name": "Baker"
+      },
+      {
+        "id": "RHJpdmVyOjM=",
+        "name": "Clark"
+      },
+      {
+        "id": "RHJpdmVyOjQ=",
+        "name": "Davis"
+      },
+      {
+        "id": "RHJpdmVyOjU=",
+        "name": "Evans"
+      },
+      {
+        "id": "RHJpdmVyOjY=",
+        "name": "Zunairah"
+      }
+    ]
+  }
+}
+#################################
+query#2
+
+query {
+  singleDriver(id: "RHJpdmVyOjE="){
+    id
+    name
+  accessibleVehicles{
+  	vin 
+    
+  }
+  }
+}
+
+output: 
+{
+  "data": {
+    "singleDriver": {
+      "accessibleVehicles": [
+        {
+          "vin": "B2"
+        },
+        {
+          "vin": "C3"
+        }
+      ],
+      "id": "RHJpdmVyOjE=",
+      "name": "Adams"
+    }
+  }
+}
+
+#################################
+query#3
+
+query {
+  vehicles{
+    vin
+    id
+	}
+}
+
+ouput:
+{
+  "data": {
+    "vehicles": [
+      {
+        "id": "VmVoaWNsZTox",
+        "vin": "A1"
+      },
+      {
+        "id": "VmVoaWNsZToy",
+        "vin": "B2"
+      },
+      {
+        "id": "VmVoaWNsZToz",
+        "vin": "C3"
+      },
+      {
+        "id": "VmVoaWNsZTo0",
+        "vin": "A123"
+      },
+      {
+        "id": "VmVoaWNsZTo2",
+        "vin": "TEST_VIN_z"
+      }
+    ]
+  }
+}
+
+#################################
+query#4
+query {
+	singleVehicle(id: "VmVoaWNsZToy"){
+    vin
+    id
+    driversWithAccess{
+      name
+      id
+    }
+  }
+}
+
+output:
+{
+  "data": {
+    "singleVehicle": {
+      "driversWithAccess": [
+        {
+          "id": "RHJpdmVyOjE=",
+          "name": "Adams"
+        },
+        {
+          "id": "RHJpdmVyOjI=",
+          "name": "Baker"
+        }
+      ],
+      "id": "VmVoaWNsZToy",
+      "vin": "B2"
+    }
+  }
+}
+
+#################################
+query#5
+query {
+	singleDriver(id: "RHJpdmVyOjE="){
+    name
+    id
+    accessibleVehicles{
+      vin
+      id
+    }
+  }
+}
+
+output:
+{
+  "data": {
+    "singleDriver": {
+      "accessibleVehicles": [
+        {
+          "id": "VmVoaWNsZToy",
+          "vin": "B2"
+        },
+        {
+          "id": "VmVoaWNsZToz",
+          "vin": "C3"
+        }
+      ],
+      "id": "RHJpdmVyOjE=",
+      "name": "Adams"
+    }
+  }
+}
+
+#################################
+query#6
+mutation updateVehicle($input: UpdateVehicleInput!){
+  
+  updateVehicle(input: $input){
+    vehicle{
+      vin
+      id
+    }
+  }
+  
+}
+
+input:
+{
+  "input": {
+    "vin": "MUHAMMADSHOA12345",
+    "id": "VmVoaWNsZTo2"
+  }
+}
+
+output:
+{
+  "data": {
+    "updateVehicle": {
+      "vehicle": {
+        "id": "VmVoaWNsZTo2",
+        "vin": "MUHAMMADSHOA12345"
+      }
+    }
+  }
+}
+
+#################################
+query#7
+
+mutation updateDriver($input: UpdateDriverInput!){
+  
+  updateDriver(input: $input){
+    driver{
+      name
+      id
+    }
+  }
+}
+
+input:
+{
+  "input": {
+    "name": "MuhammadShoaib",
+    "id": "RHJpdmVyOjY="
+  }
+}
+
+output:
+{
+  "data": {
+    "updateDriver": {
+      "driver": {
+        "id": "RHJpdmVyOjY=",
+        "name": "MuhammadShoaib"
+      }
+    }
+  }
+}
+
+#################################
+query#8
+
+mutation createDriver($input: CreateDriverInput!){
+  
+  createDriver(input: $input){
+    driver{
+      name
+      id
+    }
+  }
+}
+
+input:
+{
+  "input": {
+    "name": "AfshanShoaib"
+  }
+}
+
+output:
+
+{
+  "data": {
+    "createDriver": {
+      "driver": {
+        "id": "RHJpdmVyOjc=",
+        "name": "AfshanShoaib"
+      }
+    }
+  }
+}
+
+#################################
+query#9
+query{
+  cabs{
+    id
+    type
+  }
+}
+
+output:
+{
+  "data": {
+    "cabs": [
+      {
+        "id": "Q2FiOjE=",
+        "type": "uber"
+      },
+      {
+        "id": "Q2FiOjI=",
+        "type": "lyft"
+      },
+      {
+        "id": "Q2FiOjM=",
+        "type": "lyft"
+      }
+    ]
+  }
+}
+
+#################################
+query#10
+
+mutation addCab($input: AddCabInput!){
+  addCab(input: $input){
+    result
+  }
+}
+
+input:
+{
+  "input": {
+    "type": "shuttle service",
+    "vehicleId": "VmVoaWNsZTo0"
+  }
+}
+
+output:
+{
+  "data": {
+    "addCab": {
+      "result": true
+    }
+  }
+}

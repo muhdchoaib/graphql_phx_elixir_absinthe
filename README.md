@@ -19,13 +19,27 @@ _Note:_ if you make changes to the migrations, seeds, or otherwise need to reset
 
 ### To-do
 
-- [ ] Get the project up and running.
-- [ ] Try out some of the examples listed below in the [GraphQL Playground](https://github.com/prisma/graphql-playground) hosted at [http://localhost:4002/api/graphiql](http://localhost:4002/api/graphiql)
-- [ ] Try writing some of your own queries and mutations or modifying existing ones to fetch additional information.
-- [ ] Try modifying the query or mutation definitions to explore how they affect the data or errors returned over GraphQL.
-- [ ] Search throughout the project (under the [`apps`](https://github.com/potatosalad/fleet/tree/master/apps) directory) for code comments starting with `TODO`
-- [ ] Implement the resolvers mentioned in the `TODO` comments and write example GraphQL queries and mutations to confirm their functionality as you go.
-- [ ] Try adding something new to the project.  For example, add a new table which would require a new node type and query/mutation definitions.  Or add a useful computed field onto an existing object type.
+* Get the project up and running.
+ * Done
+
+* Try out some of the examples listed below in the [GraphQL Playground](https://github.com/prisma/graphql-playground) hosted at [http://localhost:4002/api/graphiql (http://localhost:4002/api/graphiql)
+ * Done
+* Try writing some of your own queries and mutations or modifying existing ones to fetch additional information.
+ * Done - see attached document ```https://github.com/potatosalad/fleet/queries.txt```
+* Try modifying the query or mutation definitions to explore how they affect the data or errors returned over GraphQL.
+ * Done - see attached document ```https://github.com/potatosalad/fleet/queries.txt```
+* Search throughout the project (under the [`apps`](https://github.com/potatosalad/fleet/tree/master/apps) 
+directory) for code comments starting with `TODO`
+  * Done - see schema files
+* Implement the resolvers mentioned in the `TODO` comments and write example GraphQL queries and mutations to confirm their functionality as you go.
+  * Done - see schema files 
+* Try adding something new to the project.  For example, add a new table which would require a new node type and query/mutation definitions.  Or add a useful computed field onto an existing object type.
+  * Done. see cabs.ex under ```lib/fleet/data``` and ```lib/fleet_graphql/schema```
+  * Created a new table (cabs) with references to vehicles (vehicle id) and type(uber, lyft, shuttle service)
+  * Create new schema and data files. 
+  * Imported queries/mutations in schema.ex file
+  * Executed queries e.g. add a cab and list cabs. see attached document ```https://github.com/potatosalad/fleet/queries.txt```
+
 
 ### Examples
 
