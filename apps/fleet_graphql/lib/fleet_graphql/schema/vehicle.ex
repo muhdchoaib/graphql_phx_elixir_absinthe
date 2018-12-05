@@ -27,7 +27,7 @@ defmodule FleetGraphql.Schema.Vehicle do
     field(:drivers_with_access, list_of(non_null(:driver))) do
       resolve(&FleetGraphql.Schema.Driver.list_drivers_with_access/3)
     end
-    
+
   end
 
   object(:vehicle_mutations) do

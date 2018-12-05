@@ -4,7 +4,6 @@ defmodule FleetGraphql.Schema.Driver do
 
   node(object(:driver)) do
     field(:name, non_null(:string))
-
     field(:accessible_vehicles, list_of(non_null(:vehicle))) do
       resolve(&FleetGraphql.Schema.Vehicle.list_accessible_for_driver/3)
     end

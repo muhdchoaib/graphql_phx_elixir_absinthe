@@ -7,17 +7,20 @@ defmodule FleetGraphql.Schema do
   import_types(FleetGraphql.Schema.DriverVehicleGrant)
   import_types(FleetGraphql.Schema.Node)
   import_types(FleetGraphql.Schema.Vehicle)
+  import_types(FleetGraphql.Schema.Cab)
 
   query do
     import_fields(:driver_queries)
     import_fields(:driver_vehicle_grant_queries)
     import_fields(:node_queries)
     import_fields(:vehicle_queries)
+    import_fields(:cab_queries)
   end
 
   mutation do
     import_fields(:driver_mutations)
     import_fields(:driver_vehicle_grant_mutations)
     import_fields(:vehicle_mutations)
+    import_fields(:cab_mutations)
   end
 end
