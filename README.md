@@ -20,14 +20,14 @@ _Note:_ if you make changes to the migrations, seeds, or otherwise need to reset
 ### To-do
 
 * Get the project up and running.
- * Done
+  * Done
 
 * Try out some of the examples listed below in the [GraphQL Playground](https://github.com/prisma/graphql-playground) hosted at [http://localhost:4002/api/graphiql (http://localhost:4002/api/graphiql)
- * Done
+  * Done
 * Try writing some of your own queries and mutations or modifying existing ones to fetch additional information.
- * Done - see attached document ```https://github.com/potatosalad/fleet/queries.txt```
+  * Done - see attached document ```https://github.com/potatosalad/fleet/queries.txt```
 * Try modifying the query or mutation definitions to explore how they affect the data or errors returned over GraphQL.
- * Done - see attached document ```https://github.com/potatosalad/fleet/queries.txt```
+  * Done - see attached document ```https://github.com/potatosalad/fleet/queries.txt```
 * Search throughout the project (under the [`apps`](https://github.com/potatosalad/fleet/tree/master/apps) 
 directory) for code comments starting with `TODO`
   * Done - see schema files
